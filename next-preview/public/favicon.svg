@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 236 236" role="img" aria-label="TechPosure logo mark">
+  <rect width="236" height="236" rx="44" fill="#07110d"/>
+  <path d="M52 65h48l42 106h42M52 171h48l42-106h42" fill="none" stroke="#38d996" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M52 65 142 171M52 171 142 65" fill="none" stroke="#6d9cff" stroke-width="8" stroke-linecap="round" opacity=".95"/>
+  <circle cx="52" cy="65" r="17" fill="#07110d" stroke="#fff" stroke-width="8"/>
+  <circle cx="184" cy="65" r="17" fill="#07110d" stroke="#fff" stroke-width="8"/>
+  <circle cx="184" cy="171" r="17" fill="#07110d" stroke="#fff" stroke-width="8"/>
+</svg>

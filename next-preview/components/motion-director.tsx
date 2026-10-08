@@ -37,8 +37,14 @@ export default function MotionDirector() {
           onEnter: () => element.classList.add('is-flipped'),
         });
       });
-      gsap.to('.story-image', {
-        yPercent: -10, ease: 'none',
+      gsap.utils.toArray<HTMLElement>('.story-note').forEach((element, index) => {
+        gsap.fromTo(element, { x: index % 2 === 0 ? 110 : -110, opacity: 0 }, {
+          x: 0, opacity: 1, ease: 'none',
+          scrollTrigger: { trigger: element, start: 'top 92%', end: 'center 60%', scrub: 0.6 },
+        });
+      });
+      gsap.to('.story-backdrop img', {
+        scale: 1.13, ease: 'none',
         scrollTrigger: { trigger: '#story', start: 'top bottom', end: 'bottom top', scrub: 0.8 },
       });
     });

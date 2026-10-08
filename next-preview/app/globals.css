@@ -23,3 +23,33 @@
 .world-fallback{display:grid;place-items:center;background:none}.world-fallback svg{position:absolute;width:min(68vw,800px);height:min(85vh,800px);right:-4vw;top:8vh;opacity:.7}.mobile-menu-toggle,.site-header .mobile-nav{display:none}
 @media(max-width:850px){.site-header .desktop-nav{display:none}.mobile-menu-toggle{display:flex;width:38px;height:38px;background:transparent;border:1px solid var(--line);flex-direction:column;justify-content:center;align-items:center;gap:5px;order:3}.mobile-menu-toggle span{width:17px;height:2px;background:var(--ink)}.site-header .mobile-nav{display:none;position:absolute;top:68px;left:0;right:0;background:#fbfdfbf7;backdrop-filter:blur(18px);box-shadow:0 20px 40px #17362619;padding:18px 22px}.site-header .mobile-nav.is-open{display:flex;flex-direction:column;gap:0}.mobile-nav a{padding:14px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between}.world-fallback svg{right:-32vw;width:110vw}}
 @media(max-width:650px){.site-header .header-cta{margin-left:auto}.world-fallback svg{right:-55vw;width:140vw;opacity:.45}}
+
+/* The established logo artwork is used verbatim in the header and footer. */
+:root{--ink:#07110d;--green:#0d7c52;--green-bright:#38d996;--blue:#6d9cff}
+.site-header .brand,.site-footer .brand{line-height:0}
+.site-header .brand img,.site-footer .brand img{display:block;width:188px;height:50px;object-fit:contain}
+.site-footer .brand img{mix-blend-mode:multiply}
+
+/* A single sticky Ignite photograph connects the full story progression. */
+.story.chapter{padding:0;isolation:isolate;background:#eaf1ea;overflow:clip}
+.story-backdrop{position:sticky;top:0;z-index:0;height:100svh;margin:0 0 -100svh;overflow:hidden;background:#dce5dc}
+.story-backdrop img{object-fit:cover;object-position:center 46%;transform:scale(1.06);filter:saturate(.88)}
+.story-backdrop:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(250,253,250,.94) 0%,rgba(250,253,250,.75) 33%,rgba(250,253,250,.17) 73%,rgba(250,253,250,.07) 100%),linear-gradient(0deg,rgba(247,251,247,.45),transparent 28%);pointer-events:none}
+.story-backdrop figcaption{position:absolute;z-index:2;right:clamp(24px,6vw,110px);bottom:28px;display:flex;gap:18px;align-items:center;padding:11px 14px;background:#fbfdfbe9;border:1px solid #d8e7dc;color:#355b4b;font-size:.68rem;letter-spacing:.07em;backdrop-filter:blur(12px)}
+.story-backdrop figcaption a{text-decoration:underline;text-underline-offset:3px}
+.story-content{position:relative;z-index:1;padding:0 clamp(24px,6vw,110px);pointer-events:none}
+.story-intro{min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:120px 0 90px;max-width:780px}
+.story-intro .section-index{margin-bottom:40px}
+.story-intro h2{margin-top:18px;max-width:850px}
+.story-intro>p{font-size:clamp(1.05rem,1.5vw,1.3rem);line-height:1.65;color:#344e42;max-width:590px;margin-top:30px}
+.story-notes{display:block;max-width:none;padding:10vh 0 18vh}
+.story-notes .story-note{display:flex;align-items:center;gap:20px;width:min(580px,52vw);min-height:76svh;margin:0 0 0 auto;padding:0;border:0}
+.story-notes .story-note:nth-child(2){margin-left:0;margin-right:auto}
+.story-notes .story-note:last-child{border:0}
+.story-note>span{align-self:center;min-width:65px;color:#0d7c52;font-size:.69rem;font-weight:800;letter-spacing:.1em;white-space:nowrap}
+.story-note>div{background:#fbfdfbeb;border:1px solid #d4e6d9;box-shadow:0 25px 65px #0d312821;padding:clamp(26px,3vw,45px);backdrop-filter:blur(16px)}
+.story-note h3{font-size:clamp(1.9rem,2.8vw,3rem);line-height:1.08;margin-bottom:16px}
+.story-note p{font-size:clamp(.93rem,1.2vw,1.09rem);line-height:1.7;color:#466259}
+@media(max-width:850px){.story-backdrop img{object-position:59% 50%}.story-backdrop:after{background:linear-gradient(90deg,#fbfdfbe8 0%,#fbfdfbc9 49%,#fbfdfb54 100%)}.story-notes .story-note{width:min(600px,78vw)}.story-backdrop figcaption{right:22px;left:22px;justify-content:space-between;font-size:.6rem}}
+@media(max-width:650px){.site-header .brand img{width:152px;height:41px}.site-footer .brand img{width:175px;height:47px}.story-intro{min-height:94svh;padding-top:110px}.story-intro h2{font-size:clamp(3rem,11vw,5rem)}.story-intro>p{font-size:1rem}.story-backdrop img{object-position:56% 50%}.story-backdrop:after{background:linear-gradient(90deg,#fbfdfbeb 0%,#fbfdfbcb 61%,#fbfdfb7d 100%)}.story-notes{padding:0 0 16vh}.story-notes .story-note{width:100%;min-height:72svh;gap:0;display:block;align-content:center}.story-note>span{display:block;margin-bottom:12px}.story-note>div{padding:24px}.story-backdrop figcaption{flex-wrap:wrap;gap:4px;bottom:15px}.story-backdrop figcaption span{display:none}}
+@media(prefers-reduced-motion:reduce){.story-backdrop img{transform:none!important}.story-note{transform:none!important;opacity:1!important}}

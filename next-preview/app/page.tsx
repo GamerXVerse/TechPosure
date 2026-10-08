@@ -18,7 +18,7 @@ export default function Home() {
     <Experience />
     <MotionDirector />
     <header className="site-header">
-      <a className="brand" href="#mission" aria-label="TechPosure home"><span className="brand-symbol" aria-hidden="true"><i /><i /><i /></span><span>TechPosure</span></a>
+      <a className="brand" href="#mission" aria-label="TechPosure home"><Image src="/assets/techposure-logo.svg" alt="TechPosure" width={188} height={50} priority /></a>
       <Navigation />
       <a className="header-cta" href="#contact">Work With Us <span aria-hidden="true">↗</span></a>
     </header>
@@ -41,10 +41,13 @@ export default function Home() {
       </section>
 
       <section className="story chapter" id="story" aria-labelledby="story-title">
-        <div className="section-heading"><div className="section-index" data-reveal><span>02</span> WHERE WE STARTED</div><div data-reveal><p className="eyebrow">A CLASSROOM IDEA WITH A COMMUNITY PURPOSE</p><h2 id="story-title">Our story began at <em>Ignite.</em></h2></div><p data-reveal>Learning to build with technology showed us what the right systems can make possible. It also made us look beyond our own projects—and toward the organizations already doing essential work across Northwest Arkansas.</p></div>
-        <div className="story-grid">
-          <figure className="story-figure" data-reveal><div className="story-image"><Image src="/assets/ignite-building.jpg" alt="The entrance of Ignite Professional Studies in Bentonville, Arkansas" fill sizes="(max-width: 900px) 100vw, 48vw" /></div><figcaption><span>THE STARTING POINT · BENTONVILLE, AR</span><a href="https://www.bentonvillek12.org/o/ignite/page/facility" target="_blank" rel="noopener noreferrer">Ignite Professional Studies ↗</a></figcaption></figure>
-          <div className="story-notes">{storyNotes.map(([title, copy], index) => <article key={title} data-reveal><span>0{index + 1}</span><div><h3>{title}</h3><p>{copy}</p></div></article>)}</div>
+        <figure className="story-backdrop">
+          <Image src="/assets/ignite-building.jpg" alt="The entrance of Ignite Professional Studies in Bentonville, Arkansas" fill sizes="100vw" />
+          <figcaption><span>THE STARTING POINT · BENTONVILLE, AR</span><a href="https://www.bentonvillek12.org/o/ignite/page/facility" target="_blank" rel="noopener noreferrer">Ignite Professional Studies ↗</a></figcaption>
+        </figure>
+        <div className="story-content">
+          <div className="story-intro"><div className="section-index" data-reveal><span>02</span> WHERE WE STARTED</div><div data-reveal><p className="eyebrow">A CLASSROOM IDEA WITH A COMMUNITY PURPOSE</p><h2 id="story-title">Our story began at <em>Ignite.</em></h2></div><p data-reveal>Learning to build with technology showed us what the right systems can make possible. It also made us look beyond our own projects—and toward the organizations already doing essential work across Northwest Arkansas.</p></div>
+          <div className="story-notes">{storyNotes.map(([title, copy], index) => <article key={title} className={`story-note story-note-${index + 1}`}><span>0{index + 1} / 03</span><div><h3>{title}</h3><p>{copy}</p></div></article>)}</div>
         </div>
       </section>
 
@@ -60,6 +63,6 @@ export default function Home() {
 
       <section className="contact chapter" id="contact" aria-labelledby="contact-title"><div className="contact-heading" data-reveal><div className="section-index"><span>08</span> WORK WITH US</div><h2 id="contact-title">Have a technical problem <em>we can help solve?</em></h2><p>If your nonprofit or community initiative needs a website, application, tracking system, workflow, technology setup, or another technical project, we’d like to hear about it.</p></div><div className="contact-panel" data-reveal><span className="mono">START A CONVERSATION · NORTHWEST ARKANSAS</span><ContactForm /></div></section>
     </main>
-    <footer className="site-footer"><div><a className="brand" href="#mission"><span className="brand-symbol" aria-hidden="true"><i /><i /><i /></span><span>TechPosure</span></a><p>Technology that strengthens the people strengthening our community.</p></div><nav aria-label="Footer navigation"><a href="#story">Our Story</a><a href="#services">Services</a><a href="#process">How It Works</a><a href="#contact">Contact</a></nav><div className="footer-meta"><span>Northwest Arkansas</span><span>© 2026 TechPosure</span></div></footer>
+    <footer className="site-footer"><div><a className="brand" href="#mission" aria-label="TechPosure home"><Image src="/assets/techposure-logo.svg" alt="TechPosure" width={188} height={50} /></a><p>Technology that strengthens the people strengthening our community.</p></div><nav aria-label="Footer navigation"><a href="#story">Our Story</a><a href="#services">Services</a><a href="#process">How It Works</a><a href="#contact">Contact</a></nav><div className="footer-meta"><span>Northwest Arkansas</span><span>© 2026 TechPosure</span></div></footer>
   </>;
 }

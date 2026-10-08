@@ -21,6 +21,9 @@ for (const [name, viewport] of [['desktop', { width: 1440, height: 900 }], ['mob
   check(await page.title() === 'TechPosure | Technology for Northwest Arkansas Nonprofits', `${name}: metadata`);
   check(await page.locator('h1').count() === 1, `${name}: one semantic H1`);
   check(await page.locator('.service-card').count() === 10, `${name}: ten services retained`);
+  check((await page.locator('.site-header .brand img').getAttribute('src'))?.includes('techposure-logo.svg'), `${name}: original logo restored`);
+  check(await page.locator('.story-backdrop img').count() === 1, `${name}: Ignite photograph is the story backdrop`);
+  check(await page.locator('.story-note').count() === 3, `${name}: three story moments retained`);
   check(await page.locator('.director-card').count() === 3, `${name}: three director cards`);
   check(await page.locator('#contact input[name="email"]').count() === 1, `${name}: contact form present`);
   check(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1), `${name}: no horizontal overflow`);
@@ -36,6 +39,11 @@ for (const [name, viewport] of [['desktop', { width: 1440, height: 900 }], ['mob
   check(await card.getByText('Director of Technology & Systems Integration').count() === 1, `${name}: requested role present`);
   check(await card.locator('.director-back').isVisible(), `${name}: director details visible in reduced-motion mode`);
   check(errors.length === 0, `${name}: no page errors ${errors.join('; ')}`);
+  if (name === 'mobile') {
+    await page.evaluate(() => document.getElementById('story')?.scrollIntoView());
+    await page.waitForTimeout(300);
+    await page.screenshot({ path: '/private/tmp/techposure-story-mobile.png' });
+  }
   await page.screenshot({ path: `/private/tmp/techposure-${name}-viewport.png` });
   await page.close();
 }
@@ -44,6 +52,12 @@ const motionPage = await browser.newPage({ viewport: { width: 1280, height: 800 
 const motionErrors = [];
 motionPage.on('pageerror', error => motionErrors.push(error.message));
 await motionPage.goto(base, { waitUntil: 'networkidle' });
+await motionPage.evaluate(() => document.getElementById('story')?.scrollIntoView());
+await motionPage.waitForTimeout(700);
+await motionPage.screenshot({ path: '/private/tmp/techposure-story-intro.png' });
+await motionPage.locator('.story-note').first().scrollIntoViewIfNeeded();
+await motionPage.waitForTimeout(700);
+await motionPage.screenshot({ path: '/private/tmp/techposure-story-viewport.png' });
 await motionPage.locator('#vision').scrollIntoViewIfNeeded();
 await motionPage.waitForTimeout(700);
 await motionPage.screenshot({ path: '/private/tmp/techposure-vision-viewport.png' });
