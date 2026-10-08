@@ -1,0 +1,11 @@
+import type { Metadata } from 'next';
+import './globals.css';
+
+export const metadata: Metadata = {
+  title: 'TechPosure | Technology for Northwest Arkansas Nonprofits',
+  description: 'TechPosure helps Northwest Arkansas nonprofits design, build, and improve the technical systems behind their work.',
+};
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  return <html lang="en"><body>{children}</body></html>;
+}
