@@ -53,3 +53,23 @@
 @media(max-width:850px){.story-backdrop img{object-position:59% 50%}.story-backdrop:after{background:linear-gradient(90deg,#fbfdfbe8 0%,#fbfdfbc9 49%,#fbfdfb54 100%)}.story-notes .story-note{width:min(600px,78vw)}.story-backdrop figcaption{right:22px;left:22px;justify-content:space-between;font-size:.6rem}}
 @media(max-width:650px){.site-header .brand img{width:152px;height:41px}.site-footer .brand img{width:175px;height:47px}.story-intro{min-height:94svh;padding-top:110px}.story-intro h2{font-size:clamp(3rem,11vw,5rem)}.story-intro>p{font-size:1rem}.story-backdrop img{object-position:56% 50%}.story-backdrop:after{background:linear-gradient(90deg,#fbfdfbeb 0%,#fbfdfbcb 61%,#fbfdfb7d 100%)}.story-notes{padding:0 0 16vh}.story-notes .story-note{width:100%;min-height:72svh;gap:0;display:block;align-content:center}.story-note>span{display:block;margin-bottom:12px}.story-note>div{padding:24px}.story-backdrop figcaption{flex-wrap:wrap;gap:4px;bottom:15px}.story-backdrop figcaption span{display:none}}
 @media(prefers-reduced-motion:reduce){.story-backdrop img{transform:none!important}.story-note{transform:none!important;opacity:1!important}}
+
+/* The role is the starting face; the portrait is the scroll-revealed face. */
+.director-front{background:linear-gradient(145deg,#0a715d,#154c54);color:white;padding:clamp(24px,2.4vw,38px);display:flex;flex-direction:column;justify-content:space-between}
+.director-front:after{content:none}
+.director-front .mono{opacity:.62;font-size:.61rem}
+.director-front h3{font-size:clamp(2rem,3vw,3.6rem);line-height:1.02}
+.director-back{background:#c5d9ce;padding:0;display:block}
+.director-back:after{content:"";position:absolute;inset:48% 0 0;background:linear-gradient(transparent,#08221ad9);pointer-events:none}
+.director-back .director-front-label{z-index:1}
+.director-back .director-photo{position:absolute;inset:0}
+.director-back .director-photo img{object-fit:cover;object-position:center 30%;filter:saturate(.84)}
+@media(max-width:850px){.director-front{padding:20px}.director-front h3{font-size:2rem}}
+@media(max-width:650px){.director-front{padding:34px}.director-front h3{font-size:3rem}}
+@media(prefers-reduced-motion:reduce){
+  .director-front,.director-card.is-flipped .director-front{display:flex}
+  .director-back,.director-card.is-flipped .director-back{display:none;transform:none}
+  .director-card.is-flipped .director-front{display:none}
+  .director-card.is-flipped .director-back{display:block}
+  .director-flip{display:inline-flex}
+}

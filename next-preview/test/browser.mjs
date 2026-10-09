@@ -37,7 +37,12 @@ for (const [name, viewport] of [['desktop', { width: 1440, height: 900 }], ['mob
   }
   const card = page.locator('.director-card').first();
   check(await card.getByText('Director of Technology & Systems Integration').count() === 1, `${name}: requested role present`);
-  check(await card.locator('.director-back').isVisible(), `${name}: director details visible in reduced-motion mode`);
+  check(await card.locator('.director-front').isVisible(), `${name}: role is the starting face`);
+  check(!(await card.locator('.director-back').isVisible()), `${name}: portrait is initially hidden`);
+  await card.getByRole('button', { name: /Flip Aarush/ }).click();
+  check(await card.locator('.director-back').isVisible(), `${name}: portrait can be revealed without animation`);
+  await card.getByRole('button', { name: /Flip Aarush/ }).click();
+  check(await card.locator('.director-front').isVisible(), `${name}: role can be restored`);
   check(errors.length === 0, `${name}: no page errors ${errors.join('; ')}`);
   if (name === 'mobile') {
     await page.evaluate(() => document.getElementById('story')?.scrollIntoView());
@@ -66,8 +71,10 @@ await motionPage.waitForTimeout(700);
 await motionPage.screenshot({ path: '/private/tmp/techposure-team-viewport.png' });
 const motionCard = motionPage.locator('.director-card').first();
 check(await motionCard.evaluate(el => el.classList.contains('is-flipped')), 'motion: first director flips on scroll');
+check(await motionCard.locator('.director-back img').count() === 1, 'motion: revealed face contains portrait');
 await motionCard.locator('button').click();
 check(await motionCard.evaluate(el => !el.classList.contains('is-flipped')), 'motion: card can be flipped back by click');
+check(await motionCard.locator('.director-front .director-role').count() === 1, 'motion: starting face contains role');
 check(motionErrors.length === 0, `motion: no page errors ${motionErrors.join('; ')}`);
 await motionPage.close();
 
