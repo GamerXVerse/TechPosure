@@ -1,10 +1,10 @@
 # TechPosure website
 
-The deployable website is in `dist/`. The `TechPosure-Netlify.zip` archive places `index.html` at the root, so it can be uploaded directly to Netlify Drop or used for a manual Netlify deploy.
+The production website on Vercel is the Next.js application in `next-preview/` (a historical directory name). The `techposure` Vercel project's root directory is `next-preview` and its framework preset is Next.js. The older static site remains in `dist/` for reference and the Netlify ZIP.
 
 ## Local preview
 
-Serve the `dist/` directory with any static web server.
+Run `npm install && npm run dev` in `next-preview/`. The older `dist/` site can still be served with any static web server.
 
 ## 3D diagrams
 
@@ -16,7 +16,9 @@ Scenes initialize near the viewport, stop rendering offscreen and in background 
 
 **Netlify:** Enable form detection in the site's Forms settings, then deploy `dist/` (or the updated Netlify ZIP). Confirm that `project-inquiry` appears in Forms. Configure email notifications for the team's chosen inbox in Project configuration → Notifications. Netlify processes the POST body and applies its spam filtering plus the included honeypot. No API secret is required. Send a real test inquiry after deployment and confirm receipt in the dashboard before announcing the site.
 
-**Vercel:** This project currently uses `dist` as its project root. That folder now contains its own API handler and `/contact-submit` rewrite. The repository root also has an API entrypoint for a future root-directory change. Use preset **Other** with no build command. To activate sending, [accept the Resend Marketplace terms](https://vercel.com/gamerxverses-projects/~/integrations/accept-terms/resend?source=cli), connect Resend to the `techposure` Vercel project, and set `CONTACT_FROM_EMAIL` to an address on a domain verified in Resend. The integration provisions `RESEND_API_KEY`; keep it server-side. Choosing Aarush, Prasenjit, or Frederick sends to `aarush.divakarla@gmail.com`, `prasen.pani@gmail.com`, or `tobyf@bentonvillek12.org` respectively; choosing the team sends to all three. Set a Vercel Firewall rate-limit rule for `/contact-submit` and `/api/contact` before public launch. Send a real test inquiry to each recipient after activation and confirm delivery.
+**Vercel:** The live Next.js form posts to `/api/contact`. Its production environment needs `RESEND_API_KEY` and `CONTACT_FROM_EMAIL`; keep both server-side. Choosing Aarush, Prasenjit, or Frederick sends to `aarush.divakarla@gmail.com`, `prasen.pani@gmail.com`, or `tobyf@bentonvillek12.org` respectively; choosing the team sends to all three. The production endpoint accepted a labeled test inquiry to Aarush before release. A response from Resend confirms acceptance, not final inbox delivery.
+
+The root `vercel.json` describes the legacy static build. For a manual CLI deployment of the production Next.js app from the repository root, target project `techposure` and pass `--local-config next-preview/vercel.json`; stage with `--prod --skip-domain`, test the URL, then promote it. The Vercel project's Git root directory is already `next-preview`.
 
 Without the Vercel email settings, the form reports a delivery error and offers direct email links. A plain static local server also shows an error; it does not fake success. Browser and mocked endpoint checks do not confirm real email delivery.
 
