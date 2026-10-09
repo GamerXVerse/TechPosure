@@ -33,7 +33,8 @@ export default function MotionDirector() {
       });
       gsap.utils.toArray<HTMLElement>('.director-card').forEach((element, index) => {
         ScrollTrigger.create({
-          trigger: '#team', start: `top ${68 - index * 7}%`, once: true,
+          // Let the role face enter the viewport before revealing the portrait.
+          trigger: element, start: `center ${42 - index * 5}%`, once: true,
           onEnter: () => element.classList.add('is-flipped'),
         });
       });
